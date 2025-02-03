@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Portfolio</title>
+  <link rel="stylesheet" href="3DArtistStyle.css">
+</head>
+<body>
+  <header>
+    <h1>My 3D Portfolio</h1>
+    <nav>
+      <ul>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- <section id="hero">
+    <h2>Explore My 3D Designs</h2>
+  </section> -->
+
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery-container">
+      <div class="gallery-item extra-images" style="display: none;">
+        <img src="halo.png" alt="creepy" onclick="openImage(this)">
+        
+      </div>
+      <div class="gallery-item">
+        <img src="chase.png" alt="A Chase" onclick="openImage(this)">
+      </div>
+      <div class="gallery-item">
+        <img src="dash.png" alt="Car DashBoard" onclick="openImage(this)">
+      </div>
+      <div class="gallery-item">
+        <img src="halo.png" alt="A Halo" onclick="openImage(this)">
+      </div>
+      <div class="gallery-item extra-images" style="display: none;">
+        <img src="kitt.png" alt="KITT cockpit" onclick="openImage(this)">
+      </div>
+      <div class="gallery-item extra-images" style="display: none;">
+        <img src="kitt smoke and fogg.png" alt="kitt" onclick="openImage(this)">
+      </div>
+      <div class="gallery-item extra-images" style="display: none;">
+        <img src="cafe.png" alt="CAFE" onclick="openImage(this)">
+      </div>
+      <!-- <div class="gallery-item extra-images" style="display: none;">
+        <img src="db5afd82-919c-400f-91d9-6786241deb7d.png" alt="ATONEMENT" onclick="openImage(this)">
+      </div> -->
+      <div class="gallery-item extra-images" style="display: none;">
+        <img src="wit.png" alt="wit" onclick="openImage(this)">
+      </div>
+      <div class="gallery-item extra-images" style="display: none;">
+        <img src="highway.png" alt="chase2" onclick="openImage(this)">
+      </div>
+      <!-- <div class="gallery-item extra-images" style="display: none;">
+        <img src="perf4e3c21t.png" alt="chase2" onclick="openImage(this)">
+      </div> -->
+      <div class="gallery-item extra-images" style="display: none;">
+        <img src="limi.png" alt="creepy" onclick="openImage(this)">
+
+      <!-- </div>
+      <div class="gallery-item extra-images" style="display: none;">
+        <img src="liminel space.png" alt="creepy" onclick="openImage(this)">
+        
+      </div> -->
+      <div class="gallery-item extra-images" style="display: none;">
+        <img src="must.png" alt="Mustang" onclick="openImage(this)">
+        
+      </div>
+      <!-- <div class="gallery-item extra-images" style="display: none;">
+        <img src="mustanglol.png" alt="creepy" onclick="openImage(this)">
+        
+      </div> -->
+      <!-- <div class="gallery-item extra-images" style="display: none;">
+        <img src="realwit.png" alt="creepy" onclick="openImage(this)">
+        
+      </div> -->
+      <div class="gallery-item extra-images" style="display: none;">
+        <img src="armory.png" alt="creepy" onclick="openImage(this)">
+        
+      </div>
+      <div class="gallery-item extra-images" style="display: none;">
+        <img src="garage.png" alt="creepy" onclick="openImage(this)">
+        
+      </div>
+      <div class="gallery-item extra-images" style="display: none;">
+        <img src="chem.png" alt="creepy" onclick="openImage(this)">
+        
+      </div>
+      
+    </div>
+    <div class="show-more" onclick="toggleGallery()">Show More</div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>3D artist with experience in modeling, texturing, and animation.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:example@email.com">yashpatil378378@gmail.com</a></p>
+    <p>Follow me on: <a href="#">ArtStation</a> | <a href="https://www.linkedin.com/in/yash-patil-25b491259/">LinkedIn</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 My 3D Portfolio</p>
+  </footer>
+
+  <div id="imageModal" class="image-modal">
+    <span class="close" onclick="closeImage()">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+  </div>
+
+  <script>
+    function toggleGallery() {
+      const extraImages = document.querySelectorAll('.extra-images');
+      const showMoreButton = document.querySelector('.show-more');
+      const isVisible = extraImages[0].style.display !== 'none';
+      
+      if (isVisible) {
+        extraImages.forEach(item => item.style.display = 'none');
+        showMoreButton.textContent = 'Show More';
+      } else {
+        extraImages.forEach(item => item.style.display = 'block');
+        showMoreButton.textContent = 'Show Less';
+      }
+    }
+
+    function openImage(imgElement) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('img01');
+      const caption = document.getElementById('caption');
+      
+      modal.style.display = 'block';
+      modalImg.src = imgElement.src;
+      caption.textContent = imgElement.alt;
+    }
+
+    function closeImage() {
+      const modal = document.getElementById('imageModal');
+      modal.style.display = 'none';
+    }
+  </script>
+</body>
+</html>

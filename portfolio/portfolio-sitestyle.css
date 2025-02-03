@@ -1,0 +1,139 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    overflow: hidden;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Welcome Page Styling */
+  .welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+    text-align: center;
+  }
+  
+  .welcome-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid white;
+  }
+  
+  .welcome-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: white;
+  }
+  
+  .proceed-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #333;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .proceed-button:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  /* Portfolio Page Styling */
+  .portfolio-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .portfolio-item {
+    flex: 1;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.7;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+  
+  .portfolio-item h2 {
+    position: relative;
+    z-index: 2;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .portfolio-item:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  
+  .portfolio-item:hover {
+    flex: 3;
+  }
+  
+  .portfolio-item:not(:hover) {
+    flex: 0.7;
+  }
+  
+  .portfolio-container > .portfolio-item:not(:hover) img {
+    opacity: 0.5;
+  }
+  .hidden {
+    display: none;
+  }
+  .disabled {
+    pointer-events: none; /* Disables clicking */
+    opacity: 0.5; /* Makes it appear inactive */
+    background-color: #2a2a2a; /* Dark background */
+    position: relative;
+  }
+  
+  .disabled .under-dev-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  
