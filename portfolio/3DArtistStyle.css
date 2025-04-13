@@ -227,3 +227,88 @@ footer p {
     padding: 0.8rem 1rem;
   }
 }
+
+
+/* Slide button on right edge */
+.slide-button {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  background-color: #111;
+  color: #fff;
+  padding: 12px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 2px;
+  z-index: 999;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  transition: background 0.3s;
+}
+
+.slide-button:hover {
+  background-color: #333;
+}
+
+/* Full-page animation container */
+.animation-page {
+  position: fixed;
+  top: 0;
+  left: 100vw;
+  width: 100vw;
+  height: 100vh;
+  background: #1a1a1a;
+  color: white;
+  z-index: 998;
+  padding: 60px 40px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  transition: left 0.6s ease-in-out;
+}
+
+/* Slide in */
+.animation-page.show {
+  left: 0;
+}
+
+/* Back button inside animation page */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #444;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.back-button:hover {
+  background: #666;
+}
+.animation-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.animation-item {
+  width: 300px;
+}
+
+.animation-item video {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.animation-item p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #ccc;
+}

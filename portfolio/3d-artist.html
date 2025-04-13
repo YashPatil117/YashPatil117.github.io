@@ -27,7 +27,7 @@
       <div class="gallery-item"><img src="halo.png" alt="A Halo" onclick="openImage(this)"></div>
 
       <!-- Hidden items (initially hidden) -->
-      <div class="gallery-item extra-images"><img src="halo.png" alt="Creepy" onclick="openImage(this)"></div>
+      <div class="gallery-item extra-images"><img src="test render 3.png" alt="Shrine Golem" onclick="openImage(this)"></div>
       <div class="gallery-item extra-images"><img src="kitt.png" alt="KITT cockpit" onclick="openImage(this)"></div>
       <div class="gallery-item extra-images"><img src="test2.png" alt="KITT" onclick="openImage(this)"></div>
       <div class="gallery-item extra-images"><img src="cafe.png" alt="CAFE" onclick="openImage(this)"></div>
@@ -38,6 +38,7 @@
       <div class="gallery-item extra-images"><img src="armory.png" alt="Armory" onclick="openImage(this)"></div>
       <div class="gallery-item extra-images"><img src="garage.png" alt="Garage" onclick="openImage(this)"></div>
       <div class="gallery-item extra-images"><img src="chem.png" alt="Chemical Room" onclick="openImage(this)"></div>
+      <div class="gallery-item extra-images"><img src="render1.png" alt="lowPoly City" onclick="openImage(this)"></div>
     </div>
 
     <div class="show-more" onclick="toggleGallery()">Show More</div>
@@ -52,7 +53,7 @@
     <h2>Contact</h2>
     <p>Email: <a href="mailto:yashpatil378378@gmail.com">yashpatil378378@gmail.com</a></p>
     <p>Follow me on: 
-      <a href="#">ArtStation</a> | 
+      <a href="">ArtStation</a> | 
       <a href="https://www.linkedin.com/in/yash-patil-25b491259/" target="_blank">LinkedIn</a>
     </p>
   </section>
@@ -99,6 +100,60 @@
     window.onload = () => {
       document.querySelectorAll('.extra-images').forEach(item => item.style.display = 'none');
     };
+
+
+
+
+    function openAnimationPage() {
+  document.getElementById('animationPage').classList.add('show');
+}
+
+function closeAnimationPage() {
+  document.getElementById('animationPage').classList.remove('show');
+}
+
   </script>
+
+
+  <!-- Right Side Animation Button -->
+<div class="slide-button" onclick="openAnimationPage()">Animations</div>
+
+<!-- Hidden Animation Page -->
+<div id="animationPage" class="animation-page">
+  <button class="back-button" onclick="closeAnimationPage()">← Back</button>
+  <h2>Animation Works</h2>
+  <div class="animation-gallery">
+
+    <div class="animation-item">
+      <video autoplay muted loop playsinline>
+        <source src="0001-0190.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>Test KITT Animation</p>
+    </div>
+  
+    <div class="animation-item">
+      <video autoplay muted loop playsinline>
+        <source src="videos/animation2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>CARS</p>
+    </div>
+  
+  </div>
+  
+
+      <p></p>
+    </div>
+  
+    <!-- Add more videos like this -->
+  
+  </div>
+  
+  <p>Here you can showcase your animations, reels, breakdowns, etc.</p>
+  <!-- Add your animation content here -->
+</div>
+
+
 </body>
 </html>
