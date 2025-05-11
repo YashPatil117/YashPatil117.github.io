@@ -1,289 +1,670 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>3D Portfolio</title>
-  <link rel="stylesheet" href="3DArtistStyle.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yash Patil | 3D Artist Portfolio</title>
+  <meta name="description" content="Professional 3D artist specializing in modeling, texturing, and animation">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="3DArtistStyle.css">
 </head>
 <body>
-  <header>
-    <h1>My 3D Portfolio</h1>
-    <nav>
-      <ul>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <h1>Yash Patil</h1>
+        <span>3D Artist</span>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
+          <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+          <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
   </header>
 
-  <section id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery-container">
-      <!-- Always visible items -->
-      <div class="gallery-item"><img src="chase.png" alt="A Chase" onclick="openImage(this)"></div>
-      <div class="gallery-item"><img src="dash.png" alt="Car DashBoard" onclick="openImage(this)"></div>
-      <div class="gallery-item"><img src="test render 3.png" alt="Shrine Golem" onclick="openImage(this)"></div>
-      
+  <main>
+    <section id="gallery" class="section section-gallery">
+      <div class="container">
+        <div class="section-header">
+          <h2>3D Gallery</h2>
+          <p>Explore my latest 3D modeling and rendering projects</p>
+        </div>
+        
+        <div class="gallery-grid">
+          <!-- Featured Images -->
 
-      <!-- Hidden items (initially hidden) -->
-      
-      <div class="gallery-item extra-images"><img src="kitt.png" alt="KITT cockpit" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="test2.png" alt="KITT" onclick="openImage(this)"></div>
-      
-      <div class="gallery-item extra-images"><img src="Screenshot 2025-04-13 115159.png" alt="Starwars UE5" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="best on yet.png" alt="gangster 1" onclick="openImage(this)"></div>
-      
-      <div class="gallery-item extra-images"><img src="O123.png" alt="Gangster 2" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="O1234.png" alt="Gangster 3" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="cafe.png" alt="CAFE" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="wit.png" alt="WIT" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="highway.png" alt="Highway Chase" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="limi.png" alt="Liminal Space" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="must.png" alt="Mustang" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="armory.png" alt="Armory" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="garage.png" alt="Garage" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="chem.png" alt="Chemical Room" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="render1.png" alt="lowPoly City" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="output2.png" alt="Shoes" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="output3.png" alt="Shoes" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="YA.png" alt="" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="kitt other world.jpg" alt="some paranoid stuff" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="more cars1.png" alt="GARAGE" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="sci fi gun bundle.png" alt="A SCIFIGUN(available for download on sketchfab)" onclick="openImage(this)"></div>
-      <div class="gallery-item extra-images"><img src="Alternate world.png" alt="Alternate world/planet" onclick="openImage(this)"></div>
+          <div class="gallery-item">
+            <img src="odst render 1 (1).png" alt="ODST 1" loading="lazy">
+            <div class="item-overlay">
+              <h3>ODST 1</h3>
+              <button class="view-btn" onclick="openModal('odst render 1 (1).png', 'ODST 1')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
 
+          <div class="gallery-item">
+            <img src="odst render 1 (2).png" alt="ODST 2" loading="lazy">
+            <div class="item-overlay">
+              <h3>ODST 2</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'ODST 2')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
 
-      
-      <!-- <div class="gallery-item extra-images"><img src="halo.png" alt="A Halo" onclick="openImage(this)"></div> -->
-      
+          
+
+          <div class="gallery-item">
+            <img src="chase.png" alt="A Chase Scene" loading="lazy">
+            <div class="item-overlay">
+              <h3>A Chase Scene</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="test2.png" alt="KITT" loading="lazy">
+            <div class="item-overlay">
+              <h3>KITT</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'KITT')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+           <div class="gallery-item">
+            <img src="starwars ue 5.png" alt="starwars UE5" loading="lazy">
+            <div class="item-overlay">
+              <h3>starwars UE5</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'starwars UE5')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="Alternate world.png" alt="A forerunner world?" loading="lazy">
+            <div class="item-overlay">
+              <h3>A forerunner world?</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+            <div class="gallery-item">
+            <img src="space.png" alt="VOID" loading="lazy">
+            <div class="item-overlay">
+              <h3>VOID</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="armory.png" alt="Armory" loading="lazy">
+            <div class="item-overlay">
+              <h3>Armory</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="best on yet.png" alt="Mafia" loading="lazy">
+            <div class="item-overlay">
+              <h3>Mafia</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="cafe.png" alt="A cute Cafe" loading="lazy">
+            <div class="item-overlay">
+              <h3>A cute Cafe</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="chem.png" alt="Chemistry lab (QUEBE)" loading="lazy">
+            <div class="item-overlay">
+              <h3>Chemistry lab (QUEBE)</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="render1.png" alt="low poly city (Side2Side)" loading="lazy">
+            <div class="item-overlay">
+              <h3>low poly city (Side2Side)</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="robot.png" alt="QUEBE " loading="lazy">
+            <div class="item-overlay">
+              <h3>QUEBE</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+          
+          <div class="gallery-item">
+            <img src="dash.png" alt="KITT dashboard" loading="lazy">
+            <div class="item-overlay">
+              <h3>KITT dashboard</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+          
+          <div class="gallery-item">
+            <img src="earyth.png" alt="A planet" loading="lazy">
+            <div class="item-overlay">
+              <h3>A planet</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+          
+          <div class="gallery-item">
+            <img src="garage.png" alt="Garage" loading="lazy">
+            <div class="item-overlay">
+              <h3>Garage</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+          
+          <div class="gallery-item">
+            <img src="halo.png" alt="A Halo" loading="lazy">
+            <div class="item-overlay">
+              <h3>A Halo</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+          
+          <div class="gallery-item">
+            <img src="highway.png" alt="Highway" loading="lazy">
+            <div class="item-overlay">
+              <h3>Highway</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+          
+          <div class="gallery-item">
+            <img src="kitt other world.jpg" alt="A Mirror Dimension?" loading="lazy">
+            <div class="item-overlay">
+              <h3>A Mirror Dimension?</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+                    <div class="gallery-item">
+            <img src="kitt.png" alt="KITT" loading="lazy">
+            <div class="item-overlay">
+              <h3>KITT</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+                    <div class="gallery-item">
+            <img src="limi.png" alt="Odd" loading="lazy">
+            <div class="item-overlay">
+              <h3>Odd</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+                    <div class="gallery-item">
+            <img src="main menu 2.png" alt="QUEBE closeup" loading="lazy">
+            <div class="item-overlay">
+              <h3>QUEBE closeup</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+                    <div class="gallery-item">
+            <img src="more cars1.png" alt="CARS" loading="lazy">
+            <div class="item-overlay">
+              <h3>CARS</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+                    <div class="gallery-item">
+            <img src="must.png" alt="mustang" loading="lazy">
+            <div class="item-overlay">
+              <h3>mustang</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+                    <div class="gallery-item">
+            <img src="O123.png" alt="mafia 2" loading="lazy">
+            <div class="item-overlay">
+              <h3>mafia 2</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+                    <div class="gallery-item">
+            <img src="O1234.png" alt="Mafia 3" loading="lazy">
+            <div class="item-overlay">
+              <h3>Mafia 3</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+          
+
+                  <div class="gallery-item">
+            <img src="output2.png" alt="Shoes" loading="lazy">
+            <div class="item-overlay">
+              <h3>Shoes</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+                  <div class="gallery-item">
+            <img src="output3.png" alt="Shoes 2" loading="lazy">
+            <div class="item-overlay">
+              <h3>Shoes 2</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+                 <div class="gallery-item">
+            <img src="warbr.png" alt="Warbrain (QUEBE)" loading="lazy">
+            <div class="item-overlay">
+              <h3>Warbrain (QUEBE)</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+                 <div class="gallery-item">
+            <img src="wit.png" alt="hallway" loading="lazy">
+            <div class="item-overlay">
+              <h3>hallway</h3>
+              <button class="view-btn" onclick="openModal('images/chase.png', 'A Chase Scene')">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+          
+          <!-- More gallery items in same format -->
+        </div>
+
+        <div class="gallery-controls">
+          <button class="btn btn-load-more" id="loadMore">
+            <span class="show-text">Show More</span>
+            <span class="hide-text">Show Less</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section section-about">
+      <div class="container">
+        <div class="section-header">
+          <h2>About Me</h2>
+          <p>3D artist with passion for creating immersive digital experiences</p>
+        </div>
+        
+        <div class="about-content">
+          <div class="about-text">
+            <p>I specialize in creating high-quality 3D assets for games, films, and architectural visualization. With expertise in modeling, texturing I bring creative visions to life with technical precision and artistic flair.</p>
+            <p>My workflow utilizes tools including Blender, Substance Painter, Unreal Engine and Unity Engine to deliver assets that meet professional production standards.</p>
+          </div>
+          
+          <div class="skills-section">
+            <h3>Skills & Expertise</h3>
+            <div class="skills-grid">
+              <div class="skill-card">
+                <i class="fas fa-cube"></i>
+                <h4>3D Modeling</h4>
+                <p>High and low poly modeling for various applications</p>
+              </div>
+              <!-- More skill cards -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-contact">
+      <div class="container">
+        <div class="section-header">
+          <h2>Get In Touch</h2>
+          <p>Available for freelance and full-time opportunities</p>
+        </div>
+        
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="info-card">
+              <i class="fas fa-envelope"></i>
+              <h4>Email</h4>
+              <a href="mailto:yashpatil378378@gmail.com">yashpatil378378@gmail.com</a>
+            </div>
+            
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/yash-patil-25b491259/" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" target="_blank" aria-label="ArtStation">
+                <i class="fab fa-artstation"></i>
+              </a>
+              <a href="#" target="_blank" aria-label="Sketchfab">
+                <i class="fas fa-cube"></i>
+              </a>
+            </div>
+          </div>
+          
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-submit">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Animation Panel -->
+  <div class="animation-panel-toggle" id="animationToggle">
+    <i class="fas fa-play"></i>
+    <span>Animations</span>
+  </div>
+
+  <div class="animation-panel" id="animationPanel">
+    <div class="panel-header">
+      <button class="panel-close" id="closeAnimationPanel">
+        <i class="fas fa-times"></i>
+      </button>
+      <h2>Animation Showcase</h2>
     </div>
+    
+    <div class="animation-grid">
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="0001-0024.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
 
-    <div class="show-more" onclick="toggleGallery()">Show More</div>
-  </section>
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="0001-0190.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>3D artist with experience in modeling, texturing, and animation.</p>
-  </section>
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="0516-0570.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:yashpatil378378@gmail.com">yashpatil378378@gmail.com</a></p>
-    <p>Follow me on: 
-      <a href="">ArtStation</a> | 
-      <a href="https://www.linkedin.com/in/yash-patil-25b491259/" target="_blank">LinkedIn</a>
-    </p>
-  </section>
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="0550-0850.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
 
-  <footer>
-    <p>&copy; 2025 My 3D Portfolio</p>
-  </footer>
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="990-1150 new0990-1150.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
+
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="ANIMATION PREVIEW_10800-0976.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
+
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="cowbot animation walkcycle0010-0055.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
+
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="cowbot animation walkcycle0080-0150.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
+
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="FINAL MAIN MENU THEME  (1).mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
+
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="marathon gun.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
+
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="skateguy character animation0020-0160.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
+
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="Unreal_Engine_5_2024.05.23_-_19.39.21.03.DVR.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
+
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="Unreal_Engine_5_2024.05.23_-_19.39.21.03.DVR.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
+
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="wildwestCharacter0020-0100.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
+
+      <div class="animation-item">
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="wlakcycle0470-0516.mp4" type="video/mp4">
+            
+          </video>
+        </div>
+        <div class="animation-info">
+          <h3>Test KITT Animation</h3>
+          <p>Vehicle animation test showing smooth motion and camera work</p>
+        </div>
+      </div>
+      <!-- More animation items -->
+    </div>
+  </div>
 
   <!-- Image Modal -->
-  <div id="imageModal" class="image-modal">
-    <span class="close" onclick="closeImage()">&times;</span>
-    <img class="modal-content" id="img01">
-    <div id="caption"></div>
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModal">
+        <i class="fas fa-times"></i>
+      </button>
+      <img src="" alt="" id="modalImage">
+      <div class="modal-caption" id="modalCaption"></div>
+    </div>
   </div>
 
-  <script>
-    function toggleGallery() {
-      const extraImages = document.querySelectorAll('.extra-images');
-      const showMoreButton = document.querySelector('.show-more');
-      const isHidden = extraImages[0].style.display === 'none' || extraImages[0].style.display === '';
-
-      extraImages.forEach(item => {
-        item.style.display = isHidden ? 'block' : 'none';
-      });
-
-      showMoreButton.textContent = isHidden ? 'Show Less' : 'Show More';
-    }
-
-    function openImage(imgElement) {
-      const modal = document.getElementById('imageModal');
-      const modalImg = document.getElementById('img01');
-      const caption = document.getElementById('caption');
-
-      modal.style.display = 'block';
-      modalImg.src = imgElement.src;
-      caption.textContent = imgElement.alt;
-    }
-
-    function closeImage() {
-      document.getElementById('imageModal').style.display = 'none';
-    }
-
-    // Hide extra images on load
-    window.onload = () => {
-      document.querySelectorAll('.extra-images').forEach(item => item.style.display = 'none');
-    };
-
-
-
-
-    function openAnimationPage() {
-  document.getElementById('animationPage').classList.add('show');
-}
-
-function closeAnimationPage() {
-  document.getElementById('animationPage').classList.remove('show');
-}
-
-  </script>
-
-
-  <!-- Right Side Animation Button -->
-<div class="slide-button" onclick="openAnimationPage()">Animations</div>
-
-<!-- Hidden Animation Page -->
-<div id="animationPage" class="animation-page">
-  <button class="back-button" onclick="closeAnimationPage()">← Back</button>
-  <h2>Animation Works</h2>
-  <div class="animation-gallery">
-
-
-
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="0001-0190.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>Test KITT Animation</p>
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="copyright">
+          &copy; <span id="currentYear"></span> Yash Patil. All rights reserved.
+        </div>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
     </div>
+  </footer>
 
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="ANIMATION PREVIEW_10800-0976.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>soldier walkcycle animations (QUEBE)</p>
-    </div>
-
-  
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="0001-0500.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>a VOID</p>
-    </div>
-
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="cowbot animation walkcycle0010-0055.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>Block type animation for a game</p>
-    </div>
-  
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="cowbot animation walkcycle0080-0150.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>A intro animation for the character</p>
-    </div>
-  
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="skateguy character animation0020-0160.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>A intro animation for A character</p>
-    </div>
-  
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="0001-0024.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>Walk cycle for a game (QUEBE)</p>
-    </div>
-
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="990-1150 new0990-1150.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>cutscene animations (QUEBE)</p>
-    </div>
-
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="0516-0570.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>cutscene animations (QUEBE)</p>
-    </div>
-
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="0520-0640.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>cutscene animations (QUEBE)</p>
-    </div>
-
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="0550-0850.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>cutscene animations (QUEBE)</p>
-    </div>
-
-
-
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="wlakcycle0470-0516.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>soldier walkcycle animations (QUEBE)</p>
-    </div>
-
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="wildwestCharacter0020-0100.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>A cowboy intro animation (WIP GAME)</p>
-    </div>
-
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="Unreal_Engine_5_2024.05.23_-_19.39.21.03.DVR.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>Unreal engine 5 ANI test</p>
-    </div>
-
-    <div class="animation-item">
-      <video autoplay muted loop playsinline>
-        <source src="marathon gun.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>A Gun Showcase</p>
-    </div>
-
-
-
-  </div>
-  
-
-      <p></p>
-    </div>
-  
-    <!-- Add more videos like this -->
-  
-  </div>
-  
-  <p>Here you can showcase your animations, reels, breakdowns, etc.</p>
-  <!-- Add your animation content here -->
-</div>
-
-
+  <script src="3dartist.js"></script>
 </body>
 </html>
