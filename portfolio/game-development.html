@@ -3,34 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Development Portfolio</title>
-  <link rel="stylesheet" href="game-portfolio-style.css">
+  <title>Yash Patil | Game Development</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400&display=swap">
+  <style>
+    :root {
+      --primary-dark: #0a0a0a;
+      --secondary-dark: #1a1a1a;
+      --accent-color: #8b0000;
+      --accent-hover: #a52a2a;
+      --text-primary: #e0e0e0;
+      --text-secondary: #b0b0b0;
+      --gold-accent: #d4af37;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--primary-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(139, 0, 0, 0.1) 0%, transparent 20%);
+      background-attachment: fixed;
+    }
+    
+    header {
+      padding: 2rem 0;
+      background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.7));
+      border-bottom: 1px solid rgba(139, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-accent), transparent);
+      box-shadow: 0 0 10px var(--gold-accent);
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .game-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      padding: 3rem 0;
+    }
+    
+    .game-card {
+      background: linear-gradient(to bottom, var(--secondary-dark), #111);
+      border: 1px solid rgba(139, 0, 0, 0.2);
+      border-radius: 5px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    .game-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(139, 0, 0, 0.4);
+      border-color: rgba(139, 0, 0, 0.4);
+    }
+    
+    .game-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+    }
+    
+    .game-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(139, 0, 0, 0.3);
+    }
+    
+    .game-content {
+      padding: 1.5rem;
+    }
+    
+    .game-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--gold-accent);
+    }
+    
+    .game-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .game-link {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background-color: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 3px;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .game-link:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+    }
+    
+    .game-link::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .game-link:hover::before {
+      left: 100%;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(139, 0, 0, 0.3);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .game-container {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Game Development Portfolio</h1>
-    <p>Explore the games I'm working on!</p>
+    <div class="container">
+      <h1>Yash Patil | Game Development </h1>
+      <p class="subtitle">Forging worlds through code and creativity</p>
+    </div>
   </header>
 
-  <section class="game-container">
-    <div class="game-card">
-      <img src="main menu 2.png" alt="Quebe Game">
-      <h2>QUEBE</h2>
-      <p>A top-down shooter where a bio-mechanical weapon seeks vengeance against its creators.</p>
-      <a href="WhiteBoard-Studio.html" class="game-link" onclick="event.preventDefault(); location.href='WhiteBoard-Studio.html';">View Details</a>
+  <main class="container">
+    <div class="game-container">
+      <div class="game-card">
+        <img src="main menu 2.png" alt="Quebe Game" class="game-image">
+        <div class="game-content">
+          <h2 class="game-title">QUEBE</h2>
+          <p class="game-description">A dark top-down shooter where a bio-mechanical weapon awakens to seek vengeance against its creators. Navigate through ruined laboratories and face the consequences of forbidden science.</p>
+          <a href="WhiteBoard-Studio.html" class="game-link">ENTER THE LAB</a>
+        </div>
+      </div>
 
+      <div class="game-card">
+        <img src="bubblescape.png" alt="BubbleScape Game" class="game-image">
+        <div class="game-content">
+          <h2 class="game-title">BUBBLESCAPE</h2>
+          <p class="game-description">A surreal journey as a fragile soap bubble through a decaying mansion of madness. Solve environmental puzzles while avoiding dangers that would pop your delicate form.</p>
+          <a href="#" class="game-link">COMING SOON</a>
+        </div>
+      </div>
     </div>
+  </main>
 
-    <div class="game-card">
-      <img src="bubblescape.png" alt="BubbleScape Game">
-      <h2>BubbleScape</h2>
-      <p>Navigate as a fragile soap bubble, escaping a house of madness.</p>
-
-
-       
-       
-
+  <footer>
+    <div class="container">
+      <p>© 2023 WhiteBoard Studio. All rights reserved.</p>
     </div>
-  </section>
+  </footer>
 </body>
 </html>
