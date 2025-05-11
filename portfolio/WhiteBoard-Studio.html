@@ -3,80 +3,594 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WHITEBOARD STUDIOS</title>
-  <link rel="stylesheet" href="whiteboardstyle.css">
+  <title>WHITEBOARD STUDIOS | QUEBE Game</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap">
+  <style>
+    :root {
+      --primary-dark: #0a0a0a;
+      --secondary-dark: #1a1a1a;
+      --accent-blue: #00aaff;
+      --accent-blue-hover: #0077cc;
+      --accent-red: #ff3a3a;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --neon-glow: 0 0 10px rgba(0, 170, 255, 0.7);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--primary-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: rgba(10, 10, 10, 0.9);
+      padding: 1rem 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+      border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .StudioName {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      text-shadow: var(--neon-glow);
+      transition: all 0.3s ease;
+    }
+    
+    .StudioName:hover {
+      text-shadow: 0 0 15px rgba(0, 170, 255, 0.9);
+    }
+    
+    .menu-button {
+      background: transparent;
+      color: var(--text-primary);
+      padding: 0.8rem 1.5rem;
+      border: 2px solid var(--accent-blue);
+      border-radius: 4px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .menu-button:hover {
+      background-color: var(--accent-blue);
+      box-shadow: var(--neon-glow);
+      transform: translateY(-2px);
+    }
+    
+    .menu-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .menu-button:hover::before {
+      left: 100%;
+    }
+    
+    /* Hero Video Section */
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      margin-top: 0;
+    }
+    
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .overlay-text {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--text-primary);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+      letter-spacing: 2px;
+      width: 100%;
+    }
+    
+    .quebe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--text-primary);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 6rem;
+      font-weight: 700;
+      text-shadow: 0 0 20px rgba(0, 170, 255, 0.9);
+      text-align: center;
+      margin-top: 2rem;
+      letter-spacing: 5px;
+    }
+    
+    .play-button-container {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 80px;
+    }
+    
+    .play-button {
+      width: 100%;
+      height: 100%;
+      background-color: var(--accent-blue);
+      color: var(--text-primary);
+      border: none;
+      border-radius: 4px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 170, 255, 0.5);
+    }
+    
+    .play-button:hover {
+      background-color: var(--accent-red);
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255, 58, 58, 0.7);
+    }
+    
+    .play-button::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: 0.5s;
+    }
+    
+    .play-button:hover::after {
+      left: 100%;
+    }
+    
+    /* Level Preview Section */
+    .lvl_image {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      margin-top: 0;
+    }
+    
+    .lvl_image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+    
+    .lvl_image .text {
+      position: absolute;
+      top: 40%;
+      left: 10%;
+      transform: translateY(-50%);
+      color: var(--text-primary);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-shadow: 0 0 15px rgba(0, 170, 255, 0.8);
+      line-height: 1.3;
+      max-width: 600px;
+    }
+    
+    .playnow {
+      position: absolute;
+      top: 55%;
+      left: 10%;
+      color: var(--text-primary);
+      width: 220px;
+      height: 70px;
+      background-color: var(--accent-blue);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 170, 255, 0.5);
+    }
+    
+    .playnow:hover {
+      background-color: var(--accent-red);
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255, 58, 58, 0.7);
+    }
+    
+    /* About Game Section */
+    .abtquebe {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5rem 0;
+      background-color: var(--secondary-dark);
+    }
+    
+    .abtquebe-text {
+      width: 50%;
+      padding: 0 3rem;
+    }
+    
+    .quebe1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      letter-spacing: 3px;
+      text-shadow: var(--neon-glow);
+    }
+    
+    .abtquebe-text h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--accent-blue);
+      margin-bottom: 1.5rem;
+      letter-spacing: 2px;
+    }
+    
+    .abtquebe-text h2 {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+    
+    .abtquebe-video {
+      width: 50%;
+      padding: 0 2rem;
+    }
+    
+    .abtquebe-video video {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Developers Section */
+    .dev-section {
+      padding: 5rem 0;
+      background-color: var(--primary-dark);
+      text-align: center;
+    }
+    
+    .dev {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 3rem;
+      letter-spacing: 2px;
+      text-shadow: var(--neon-glow);
+    }
+    
+    .developers-container {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .developer {
+      background-color: var(--secondary-dark);
+      border-radius: 8px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      align-items: center;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .developer:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 170, 255, 0.2);
+    }
+    
+    .developer-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-blue);
+      margin-right: 2rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .developer:hover .developer-img {
+      transform: scale(1.05);
+    }
+    
+    .developer-info {
+      flex: 1;
+    }
+    
+    .developer-info h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+    
+    .developer-info p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .developer-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .developer-links a {
+      text-decoration: none;
+      color: var(--text-primary);
+      background-color: var(--accent-blue);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .developer-links a:hover {
+      background-color: var(--accent-blue-hover);
+      transform: translateY(-2px);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--secondary-dark);
+      padding: 2rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(0, 170, 255, 0.2);
+    }
+    
+    footer p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .quebe {
+        font-size: 4rem;
+      }
+      
+      .overlay-text {
+        font-size: 1.5rem;
+      }
+      
+      .abtquebe {
+        flex-direction: column;
+        padding: 3rem 0;
+      }
+      
+      .abtquebe-text, .abtquebe-video {
+        width: 100%;
+        padding: 1rem;
+      }
+      
+      .abtquebe-text {
+        margin-bottom: 2rem;
+      }
+      
+      .quebe1 {
+        font-size: 3rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .StudioName {
+        font-size: 1.2rem;
+      }
+      
+      .menu-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+      }
+      
+      .quebe {
+        font-size: 3rem;
+        margin-top: 1rem;
+      }
+      
+      .overlay-text {
+        font-size: 1.2rem;
+      }
+      
+      .play-button-container {
+        width: 250px;
+        height: 70px;
+      }
+      
+      .play-button {
+        font-size: 1.2rem;
+      }
+      
+      .lvl_image .text {
+        font-size: 1.8rem;
+        left: 5%;
+      }
+      
+      .playnow {
+        left: 5%;
+        width: 180px;
+        height: 60px;
+        font-size: 1.1rem;
+      }
+      
+      .developer {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .developer-img {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+      }
+      
+      .developer-links {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .quebe {
+        font-size: 2.5rem;
+      }
+      
+      .lvl_image .text {
+        font-size: 1.5rem;
+      }
+      
+      .dev {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <div class="container">
       <div class="StudioName">
-        ＷＨＩＴＥＢＯＡＲＤ ＳＴＵＤＩＯＳ
+        WHITEBOARD STUDIOS
       </div>
-      <button class="menu-button">Explore</button>
+      <button class="menu-button">EXPLORE</button>
     </div>
   </header>
 
   <div class="video-container">
-    <video id="QUEBE-video" autoplay muted loop>
+    <video id="QUEBE-video" autoplay muted loop playsinline>
       <source src="FINAL MAIN MENU THEME  (1).mp4" type="video/mp4">
+      Your browser does not support the video tag.
     </video>
-    <div class="overlay-text">A Story Based Top-Down Shooter</div>
-    <div class="quebe">ＱＵＥＢＥ</div>
+    <div class="overlay-text">A STORY BASED TOP-DOWN SHOOTER</div>
+    <div class="quebe">QUEBE</div>
 
-    <div class="outer-rectangle">
-      <div class="inner-rectangle">
-        Play for Free
-      </div>
+    <div class="play-button-container">
+      <button class="play-button">PLAY FOR FREE</button>
     </div>
   </div>
-
-  <hr>
 
   <div class="lvl_image">
-    <img src="warbrain_company.jpg" alt="Game Image">
-    <div class="text">𝗚𝗲𝘁 𝗮 𝘁𝗮𝘀𝘁𝗲 𝗼𝗳 𝘁𝗵𝗲 𝗮𝗰𝘁𝗶𝗼𝗻!<br>𝗟𝗲𝘃𝗲𝗹 𝟭 𝗶𝘀 𝗙𝗥𝗘𝗘 𝘁𝗼 𝗽𝗹𝗮𝘆</div>
-    <div class="playnow">Play Now</div>
+    <img src="warbrain_company.jpg" alt="Game Level Preview">
+    <div class="text">GET A TASTE OF THE ACTION!<br>LEVEL 1 IS FREE TO PLAY</div>
+    <button class="playnow">PLAY NOW</button>
   </div>
 
-  <div class="abtquebe">
+  <section class="abtquebe">
     <div class="abtquebe-text">
-      <div class="quebe1">ＱＵＥＢＥ</div>
-      <h3>About</h3>
-      <h2>A Vengeful Robot on a Destructive Rampage<br>Unleash chaos in this intense action-packed 3D top-down shooter where a rogue robot is driven<br>by pure thirst for revenge.<br>Will you survive the merciless assault?</h2>
+      <div class="quebe1">QUEBE</div>
+      <h3>ABOUT</h3>
+      <h2>A vengeful robot on a destructive rampage. Unleash chaos in this intense action-packed 3D top-down shooter where a rogue robot is driven by pure thirst for revenge. Will you survive the merciless assault?</h2>
     </div>
     <div class="abtquebe-video">
-      <video id="abtquebevideo" src="Final_Mystery_void.mp4" autoplay muted loop></video>
+      <video id="abtquebevideo" src="Final_Mystery_void.mp4" autoplay muted loop playsinline></video>
     </div>
-  </div>
+  </section>
 
-  <div class="dev">
-    MEET THE DEVELOPERS:
-  </div>
+  <section class="dev-section">
+    <h2 class="dev">MEET THE DEVELOPERS</h2>
+    
+    <div class="developers-container">
+      <div class="developer">
+        <img src="resume.png" alt="Yash Patil" class="developer-img">
+        <div class="developer-info">
+          <h1>Yash Patil</h1>
+          <p>Passionate game developer and designer focused on creating immersive and engaging experiences.</p>
+          <div class="developer-links">
+            <a href="https://www.linkedin.com/in/yash-patil-25b491259/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/YashPatil117" target="_blank">GitHub</a>
+            <a href="https://www.instagram.com/yash_117_p/#" target="_blank">Instagram</a>
+          </div>
+        </div>
+      </div>
 
-  <main class="container">
-    <section class="developer">
-      <img src="resume.png" alt="Developer 1" class="developer-img">
-      <h1>Yash Patil</h1>
-      <p>Passionate game developer and designer focused on creating immersive and engaging experiences.</p>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/yash-patil-25b491259/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://github.com/YashPatil117" target="_blank">GitHub</a></li>
-        <li><a href="https://www.instagram.com/yash_117_p/#" target="_blank">Instagram</a></li>
-      </ul>
-    </section>
+      <div class="developer">
+        <img src="png-transparent-spider-man-drawing-internet-meme-know-your-meme-spiderman-comics-leaf-hand.png" alt="Shubham Shirdhone" class="developer-img">
+        <div class="developer-info">
+          <h1>Shubham Shirdhone</h1>
+          <p>Creative programmer and problem solver with a love for pushing the boundaries of gaming technology.</p>
+          <div class="developer-links">
+            <a href="https://linkedin.com/in/shubham-shirdhone" target="_blank">LinkedIn</a>
+            <a href="https://github.com/shubhamshirdhone" target="_blank">GitHub</a>
+            <a href="https://instagram.com/shubhamshirdhone" target="_blank">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="developer">
-      <h1>Shubham Shirdhone</h1>
-      <img src="png-transparent-spider-man-drawing-internet-meme-know-your-meme-spiderman-comics-leaf-hand.png" alt="Developer 2" class="developer-img">
-      <p>Creative programmer and problem solver with a love for pushing the boundaries of gaming technology.</p>
-      <ul>
-        <li><a href="https://linkedin.com/in/shubham-shirdhone" target="_blank">LinkedIn</a></li>
-        <li><a href="https://github.com/shubhamshirdhone" target="_blank">GitHub</a></li>
-        <li><a href="https://instagram.com/shubhamshirdhone" target="_blank">Instagram</a></li>
-      </ul>
-    </section>
-  </main>
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 WHITEBOARD STUDIOS. ALL RIGHTS RESERVED.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
