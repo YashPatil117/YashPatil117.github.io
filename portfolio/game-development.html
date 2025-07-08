@@ -3,226 +3,553 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yash Patil | Game Development</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400&display=swap">
+  <title>Game Development,Design Portfolio</title>
   <style>
     :root {
-      --primary-dark: #0a0a0a;
-      --secondary-dark: #1a1a1a;
-      --accent-color: #8b0000;
-      --accent-hover: #a52a2a;
-      --text-primary: #e0e0e0;
-      --text-secondary: #b0b0b0;
-      --gold-accent: #d4af37;
+      --dark-bg: #0a0a12;
+      --darker: #05050a;
+      --neon-blue: #00f0ff;
+      --neon-pink: #ff00f0;
+      --text-light: #e0e0ff;
+      --glow: 0 0 15px rgba(0, 240, 255, 0.7);
+      --pink-glow: 0 0 15px rgba(255, 0, 240, 0.7);
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
-    
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--primary-dark);
-      color: var(--text-primary);
-      line-height: 1.6;
+      font-family: 'Rajdhani', 'Arial Narrow', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      overflow-x: hidden;
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.1) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(139, 0, 0, 0.1) 0%, transparent 20%);
-      background-attachment: fixed;
+        radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 240, 0.05) 0%, transparent 20%);
     }
-    
-    header {
-      padding: 2rem 0;
-      background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.7));
-      border-bottom: 1px solid rgba(139, 0, 0, 0.3);
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(5, 5, 10, 0.9);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--neon-blue);
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-shadow: var(--glow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 1px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--neon-blue);
+      text-shadow: var(--glow);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--neon-blue);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 2rem;
       position: relative;
       overflow: hidden;
     }
-    
-    header::before {
-      content: "";
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 1.5rem;
+      color: var(--neon-blue);
+      text-shadow: var(--glow);
+      position: relative;
+    }
+
+    .hero h1::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+
+    /* Game Grid */
+    .game-grid {
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .game-card {
+      position: relative;
+      height: 450px;
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 8px;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transform: perspective(800px) rotateY(10deg) rotateX(5deg);
+      transition: var(--transition);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .game-card:hover {
+      transform: perspective(800px) rotateY(5deg) rotateX(5deg) translateY(-20px);
+      box-shadow: 0 30px 70px rgba(0, 240, 255, 0.3);
+      border-color: var(--neon-blue);
+    }
+
+    .game-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(0, 240, 255, 0.1), rgba(255, 0, 240, 0.1));
+      z-index: -1;
+    }
+
+    .game-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8);
+      transition: var(--transition);
+    }
+
+    .game-card:hover .game-image {
+      filter: brightness(1);
+    }
+
+    .game-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(5, 5, 10, 0.9), transparent);
+    }
+
+    .game-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--neon-blue);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+      transition: var(--transition);
+    }
+
+    .game-card:hover .game-title {
+      text-shadow: var(--glow);
+    }
+
+    .game-description {
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .game-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.8rem;
+      background: transparent;
+      border: 2px solid var(--neon-blue);
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-radius: 4px;
+      transition: var(--transition);
+      box-shadow: var(--glow);
+    }
+
+    .game-link:hover {
+      background: rgba(0, 240, 255, 0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 240, 255, 0.5);
+    }
+
+    .coming-soon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neon-pink);
+      text-align: center;
+      width: 100%;
+      padding: 0 20px;
+      text-shadow: var(--pink-glow);
+      font-size: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(0, 240, 255, 0.2);
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold-accent), transparent);
-      box-shadow: 0 0 10px var(--gold-accent);
+      background: linear-gradient(to right, transparent, var(--neon-blue), transparent);
     }
-    
-    h1, h2, h3 {
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-primary);
-      text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-    }
-    
-    .subtitle {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      font-style: italic;
-      margin-bottom: 1rem;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    
-    .game-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+    .social-links {
+      display: flex;
+      justify-content: center;
       gap: 2rem;
-      padding: 3rem 0;
+      margin: 2rem 0;
     }
-    
-    .game-card {
-      background: linear-gradient(to bottom, var(--secondary-dark), #111);
-      border: 1px solid rgba(139, 0, 0, 0.2);
-      border-radius: 5px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    }
-    
-    .game-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(139, 0, 0, 0.4);
-      border-color: rgba(139, 0, 0, 0.4);
-    }
-    
-    .game-card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(to right, transparent, var(--accent-color), transparent);
-    }
-    
-    .game-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-bottom: 1px solid rgba(139, 0, 0, 0.3);
-    }
-    
-    .game-content {
-      padding: 1.5rem;
-    }
-    
-    .game-title {
+
+    .social-link {
+      color: var(--text-light);
       font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--gold-accent);
+      transition: var(--transition);
     }
-    
-    .game-description {
-      color: var(--text-secondary);
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
+
+    .social-link:hover {
+      color: var(--neon-blue);
+      transform: translateY(-5px);
+      text-shadow: var(--glow);
     }
-    
-    .game-link {
-      display: inline-block;
-      padding: 0.7rem 1.5rem;
-      background-color: var(--accent-color);
-      color: white;
+
+    .back-to-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-light);
       text-decoration: none;
-      border-radius: 3px;
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      margin-top: 1rem;
+      transition: var(--transition);
     }
-    
-    .game-link:hover {
-      background-color: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+
+    .back-to-top:hover {
+      color: var(--neon-blue);
+      text-shadow: var(--glow);
     }
-    
-    .game-link::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: 0.5s;
+
+    /* Decorative elements */
+    .corner-decoration {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border: 2px solid rgba(0, 240, 255, 0.2);
+      pointer-events: none;
+      z-index: -1;
     }
-    
-    .game-link:hover::before {
-      left: 100%;
+
+    .top-left {
+      top: -150px;
+      left: -150px;
+      border-right: none;
+      border-bottom: none;
     }
-    
-    footer {
-      text-align: center;
-      padding: 2rem 0;
-      border-top: 1px solid rgba(139, 0, 0, 0.3);
-      color: var(--text-secondary);
-      font-size: 0.9rem;
+
+    .bottom-right {
+      bottom: -150px;
+      right: -150px;
+      border-left: none;
+      border-top: none;
     }
-    
-    @media (max-width: 768px) {
-      .game-container {
-        grid-template-columns: 1fr;
+
+    /* Responsive design */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 3rem;
       }
       
-      h1 {
+      .game-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .nav-links {
+        gap: 1.5rem;
+      }
+      
+      .game-card {
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        padding-top: 8rem;
+      }
+      
+      .hero h1 {
         font-size: 2rem;
+      }
+      
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      
+      .game-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>Yash Patil | Game Development </h1>
-      <p class="subtitle">Forging worlds through code and creativity</p>
+  <!-- Decorative corner elements -->
+  <div class="corner-decoration top-left"></div>
+  <div class="corner-decoration bottom-right"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <i class="fas fa-gamepad"></i> PORTAL
+    </a>
+    <div class="nav-links">
+      <a href="#games" class="nav-link">Games</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </div>
-  </header>
+  </nav>
 
-  <main class="container">
-    <div class="game-container">
-      <div class="game-card">
-        <img src="main menu 2.png" alt="Quebe Game" class="game-image">
-        <div class="game-content">
-          <h2 class="game-title">QUEBE</h2>
-          <p class="game-description">A dark top-down shooter where a bio-mechanical weapon awakens to seek vengeance against its creators. Navigate through ruined laboratories and face the consequences of forbidden science.</p>
-          <a href="WhiteBoard-Studio.html" class="game-link">ENTER THE LAB</a>
-        </div>
-      </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Game Development,Design</h1>
+    <p>Creating immersive experiences through innovative gameplay mechanics and atmospheric storytelling. Each project is a journey into new interactive possibilities.</p>
+  </section>
 
-      <div class="game-card">
-        <img src="bubblescape.png" alt="BubbleScape Game" class="game-image">
-        <div class="game-content">
-          <h2 class="game-title">BUBBLESCAPE</h2>
-          <p class="game-description">A surreal journey as a fragile soap bubble through a decaying mansion of madness. Solve environmental puzzles while avoiding dangers that would pop your delicate form.</p>
-          <a href="#" class="game-link">COMING SOON</a>
-        </div>
+  <!-- Game Grid -->
+  <section id="games" class="game-grid">
+    <div class="game-card">
+      <img src="neurofractal.jpg" alt="Project 1" class="game-image">
+      <div class="game-info">
+        <h2 class="game-title">NEUROFRACTAL</h2>
+        <p class="game-description">YOU, as the player HACK a BOT inside the most secured place on the planet just to finish the evil doings of the corporation.</p>
+        <a href="https://scope-creep-games.itch.io/neurofractal" class="game-link">
+          <i class="fas fa-play"></i> HACK IN
+        </a>
       </div>
     </div>
-  </main>
 
+    <div class="game-card">
+      <img src="bubblescape.png" alt="Project 2" class="game-image">
+      <div class="game-info">
+        <h2 class="game-title">BUBBLESCAPE</h2>
+        <p class="game-description">Escape the house, but you are a FRAGILE BUBBLE.</p>
+        <a href="synapse-breach.html" class="game-link">
+          <i class="fas fa-play"></i> BUBBLEin
+        </a>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <img src="https://www.worldone.in/cdn/shop/products/cm_1200x1200.jpg?v=1677495322" alt="Project 3" class="game-image">
+      <div class="game-info">
+        <h2 class="game-title">PROJECT ALPHs</h2>
+        <p class="game-description">COMING SOON.</p>
+        <div class="coming-soon">COMING SOON</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="hero" style="min-height: auto; padding: 6rem 2rem;">
+    <h1>About The Developer</h1>
+    <p>With a passion for blending technical precision with creative vision, I specialize in crafting unique gaming experiences that push boundaries. My approach combines rigorous systems design with atmospheric storytelling to create memorable interactive worlds.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="hero" style="min-height: auto; padding: 6rem 2rem;">
+    <h1>Get In Touch</h1>
+    <p>Interested in collaboration or want to learn more about my work? Reach out through any of these channels.</p>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <div class="container">
-      <p>© 2023 WhiteBoard Studio. All rights reserved.</p>
+    <div class="social-links">
+      <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-itch-io"></i></a>
     </div>
+    <p>&copy; 2023 Game Development Portfolio. All rights reserved.</p>
+    <a href="#" class="back-to-top">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
   </footer>
+
+  <script>
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Animate game cards on scroll
+    const gameCards = document.querySelectorAll('.game-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'perspective(800px) rotateY(10deg) rotateX(5deg)';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    gameCards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'perspective(800px) rotateY(20deg) rotateX(10deg) translateY(50px)';
+      observer.observe(card);
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+        nav.style.background = 'rgba(5, 5, 10, 0.95)';
+      } else {
+        nav.style.boxShadow = 'none';
+        nav.style.background = 'rgba(5, 5, 10, 0.9)';
+      }
+    });
+
+    // Particle background effect
+    document.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.createElement('canvas');
+      canvas.style.position = 'fixed';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.zIndex = '-1';
+      canvas.style.opacity = '0.3';
+      document.body.appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      const particles = [];
+      const particleCount = 80;
+      
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2 + 1,
+          speedX: Math.random() * 0.5 - 0.25,
+          speedY: Math.random() * 0.5 - 0.25
+        });
+      }
+      
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = '#00f0ff';
+          ctx.fill();
+          
+          p.x += p.speedX;
+          p.y += p.speedY;
+          
+          if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        }
+        
+        requestAnimationFrame(animateParticles);
+      }
+      
+      animateParticles();
+    });
+  </script>
 </body>
 </html>

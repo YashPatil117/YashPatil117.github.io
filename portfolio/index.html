@@ -4,16 +4,298 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome</title>
-  <link rel="stylesheet" href="portfolio-sitestyle.css">
+  <style>
+    :root {
+      --dark-bg: #0a0a12;
+      --darker: #05050a;
+      --neon-blue: #00f0ff;
+      --neon-pink: #ff00f0;
+      --text-light: #e0e0ff;
+      --glow: 0 0 15px rgba(0, 240, 255, 0.7);
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Rajdhani', 'Arial Narrow', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 240, 0.05) 0%, transparent 20%);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Welcome Page */
+    .welcome-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(5, 5, 10, 0.95);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .welcome-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--neon-blue);
+      box-shadow: var(--glow);
+      margin-bottom: 30px;
+      transform: perspective(800px) rotateY(0deg);
+      transition: var(--transition);
+    }
+
+    .welcome-image:hover {
+      transform: perspective(800px) rotateY(15deg);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.9);
+    }
+
+    .welcome-container h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 40px;
+      color: var(--neon-blue);
+      text-shadow: var(--glow);
+      position: relative;
+    }
+
+    .welcome-container h1::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+    }
+
+    .proceed-button {
+      background: transparent;
+      border: 2px solid var(--neon-blue);
+      color: var(--neon-blue);
+      padding: 15px 40px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--glow);
+    }
+
+    .proceed-button:hover {
+      background: rgba(0, 240, 255, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 240, 255, 0.5);
+    }
+
+    .proceed-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .proceed-button:hover::before {
+      left: 100%;
+    }
+
+    /* Portfolio Page */
+    .portfolio-container {
+      position: relative;
+      min-height: 100vh;
+      padding: 80px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      perspective: 1500px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      transform-style: preserve-3d;
+      transition: var(--transition);
+      cursor: pointer;
+      transform: rotateY(15deg) rotateX(10deg);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .portfolio-item:hover {
+      transform: rotateY(5deg) rotateX(5deg) translateY(-20px);
+      box-shadow: 0 30px 70px rgba(0, 240, 255, 0.3);
+      border-color: var(--neon-blue);
+    }
+
+    .portfolio-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(0, 240, 255, 0.1), rgba(255, 0, 240, 0.1));
+      z-index: -1;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8);
+      transition: var(--transition);
+    }
+
+    .portfolio-item:hover img {
+      filter: brightness(1);
+    }
+
+    .portfolio-item h2 {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--neon-blue);
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+      transition: var(--transition);
+    }
+
+    .portfolio-item:hover h2 {
+      transform: translateY(-10px);
+      text-shadow: var(--glow);
+    }
+
+    .under-dev-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neon-pink);
+      text-align: center;
+      width: 100%;
+      padding: 0 20px;
+      text-shadow: 0 0 10px rgba(255, 0, 240, 0.7);
+      opacity: 0.7;
+    }
+
+    .disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .disabled:hover {
+      transform: rotateY(15deg) rotateX(10deg) !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    /* Animated background elements */
+    .corner-decoration {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border: 2px solid rgba(0, 240, 255, 0.2);
+      pointer-events: none;
+    }
+
+    .top-left {
+      top: -150px;
+      left: -150px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .bottom-right {
+      bottom: -150px;
+      right: -150px;
+      border-left: none;
+      border-top: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .welcome-container h1 {
+        font-size: 2rem;
+      }
+
+      .portfolio-item {
+        width: 250px;
+        height: 350px;
+        transform: rotateY(10deg) rotateX(5deg);
+      }
+
+      .portfolio-item:hover {
+        transform: rotateY(5deg) rotateX(2deg) translateY(-10px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .welcome-container h1 {
+        font-size: 1.5rem;
+      }
+
+      .proceed-button {
+        padding: 12px 30px;
+        font-size: 1rem;
+      }
+
+      .portfolio-item {
+        width: 90%;
+        max-width: 300px;
+        height: 300px;
+        transform: rotateY(5deg) rotateX(3deg);
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+  <!-- Decorative corner elements -->
+  <div class="corner-decoration top-left"></div>
+  <div class="corner-decoration bottom-right"></div>
 
-  
   <!-- Welcome Section -->
   <div id="welcome-page" class="welcome-container">
     <img src="resume.png" alt="Your Image" class="welcome-image">
     <h1>Welcome to My Portfolio</h1>
-    <button class="proceed-button" onclick="goToPortfolio()">Proceed</button>
+    <button class="proceed-button" onclick="goToPortfolio()">
+      ENTER PORTAL <i class="fas fa-arrow-right"></i>
+    </button>
   </div>
 
   <!-- Portfolio Section -->
@@ -22,30 +304,107 @@
       <img src="main menu 2.png" alt="Game Development">
       <h2>Game Development</h2>
     </div>
-    <!-- <div class="portfolio-item artist" onclick="location.href='3dartist/3d-artist.html'"> -->
-      <div class="portfolio-item artist" onclick="location.href='3d-artist.html'">
-
-
+    
+    <div class="portfolio-item artist" onclick="location.href='3d-artist.html'">
       <img src="planet no halo.png" alt="3D Artist">
       <h2>3D Artist</h2>
     </div>
-    <!-- <div class="portfolio-item web-dev" onclick="location.href='web-development.html'">
-      <img src="web-devel-important.jpg" alt="Web Development">
-      <h2>Web Development</h2>
-    </div> -->
+    
     <div class="portfolio-item web-dev disabled">
       <img src="web-devel-important.jpg" alt="Web Development">
-      <!-- <h2>Web Development</h2> -->
-      <p class="under-dev-text">This section is currently under development.</p>
+      <p class="under-dev-text">UNDER CONSTRUCTION</p>
     </div>
   </div>
 
   <script>
-    // JavaScript to navigate between welcome and portfolio pages
+    // Enhanced navigation with animation
     function goToPortfolio() {
-      document.getElementById('welcome-page').classList.add('hidden');
-      document.getElementById('portfolio-page').classList.remove('hidden');
+      const welcome = document.getElementById('welcome-page');
+      welcome.style.opacity = '0';
+      welcome.style.transform = 'scale(0.9)';
+      
+      setTimeout(() => {
+        welcome.classList.add('hidden');
+        const portfolio = document.getElementById('portfolio-page');
+        portfolio.classList.remove('hidden');
+        
+        // Animate portfolio items in sequence
+        const items = document.querySelectorAll('.portfolio-item');
+        items.forEach((item, index) => {
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'rotateY(15deg) rotateX(10deg)';
+          }, 200 * index);
+        });
+      }, 500);
     }
+
+    // Add hover sound effects (optional)
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        // You could add a subtle sound effect here
+      });
+    });
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !document.getElementById('welcome-page').classList.contains('hidden')) {
+        goToPortfolio();
+      }
+    });
+
+    // Particle background effect (optional)
+    document.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.createElement('canvas');
+      canvas.style.position = 'fixed';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.zIndex = '-1';
+      canvas.style.opacity = '0.3';
+      document.body.appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      const particles = [];
+      const particleCount = 80;
+      
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2 + 1,
+          speedX: Math.random() * 0.5 - 0.25,
+          speedY: Math.random() * 0.5 - 0.25
+        });
+      }
+      
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = '#00f0ff';
+          ctx.fill();
+          
+          p.x += p.speedX;
+          p.y += p.speedY;
+          
+          if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        }
+        
+        requestAnimationFrame(animateParticles);
+      }
+      
+      animateParticles();
+    });
   </script>
 </body>
 </html>
