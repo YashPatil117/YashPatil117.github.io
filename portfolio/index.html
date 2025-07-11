@@ -38,11 +38,13 @@
     /* Welcome Page */
     .welcome-container {
       position: fixed;
+      flex-direction: column;
       top: 0;
       left: 0;
       width: 100%;
       height: 100vh;
       display: flex;
+      padding: 20px;
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -68,27 +70,30 @@
       box-shadow: 0 0 30px rgba(0, 240, 255, 0.9);
     }
 
-    .welcome-container h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 40px;
-      color: var(--neon-blue);
-      text-shadow: var(--glow);
-      position: relative;
-    }
+    .welcome-container h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  color: var(--neon-blue);
+  text-shadow: var(--glow);
+  text-align: center;
+  line-height: 1.6;
+  position: relative;
+}
 
-    .welcome-container h1::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
-    }
+    .welcome-container h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+}
+
 
     .proceed-button {
       background: transparent;
@@ -291,12 +296,18 @@
 
   <!-- Welcome Section -->
   <div id="welcome-page" class="welcome-container">
-    <img src="resume.png" alt="Your Image" class="welcome-image">
-    <h1>Welcome to My Portfolio</h1>
-    <button class="proceed-button" onclick="goToPortfolio()">
-      ENTER PORTAL <i class="fas fa-arrow-right"></i>
-    </button>
-  </div>
+  <img src="yash.png" alt="Your Image" class="welcome-image">
+  
+  <h3>
+    Welcome!<br>
+    I'm Yash Patil, and this is my portfolio.<br>
+    Explore my work, projects, and passion for Games, Art & Programming
+  </h3>
+  
+  <button class="proceed-button" onclick="goToPortfolio()">
+    ENTER PORTAL <i class="fas fa-arrow-right"></i>
+  </button>
+</div>
 
   <!-- Portfolio Section -->
   <div id="portfolio-page" class="portfolio-container hidden">
@@ -310,11 +321,14 @@
       <h2>3D Artist</h2>
     </div>
     
-    <div class="portfolio-item web-dev disabled">
-      <img src="web-devel-important.jpg" alt="Web Development">
-      <p class="under-dev-text">UNDER CONSTRUCTION</p>
+    <div class="portfolio-item artist" onclick="location.href='aboutme.html'">
+      <img src="https://img.freepik.com/premium-vector/after-school-education-2d-vector-isolated-illustration_151150-10320.jpg?semt=ais_hybrid&w=740" alt="3D Artist">
+      <h2>ABOUT ME</h2>
     </div>
-  </div>
+
+    
+
+    
 
   <script>
     // Enhanced navigation with animation
