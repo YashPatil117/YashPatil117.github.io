@@ -538,7 +538,7 @@
     .animation-panel-toggle {
       position: fixed;
       bottom: 30px;
-      right: 30px;
+      right: 30px; /* visible and accessible */
       background: linear-gradient(45deg, var(--primary), var(--secondary));
       color: var(--dark);
       width: 60px;
@@ -553,10 +553,12 @@
       z-index: 999;
       transition: var(--transition);
       overflow: hidden;
+      opacity: 1;
     }
 
+    .animation-panel-toggle:focus,
     .animation-panel-toggle:hover {
-      transform: translateY(-5px) scale(1.1);
+      transform: translateY(-5px) scale(1.05);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), var(--glow-secondary);
     }
 
@@ -905,6 +907,49 @@
     ::-webkit-scrollbar-thumb:hover {
       background: var(--secondary);
     }
+
+    /* Top category tabs */
+    .top-categories {
+      position: sticky;
+      top: 72px; /* sits under the fixed header */
+      z-index: 995;
+      padding: 14px 0;
+      background: linear-gradient(180deg, rgba(5,5,10,0.6), rgba(5,5,10,0.3));
+      border-bottom: 1px solid rgba(255,255,255,0.02);
+      backdrop-filter: blur(6px);
+    }
+
+    .top-categories .tabs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .top-categories .tab {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.05);
+      color: var(--light);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .top-categories .tab.active {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: var(--dark);
+      box-shadow: var(--glow);
+      border-color: transparent;
+    }
+
+    @media (max-width: 576px) {
+      .top-categories { top: 86px; }
+      .top-categories .tabs { gap: 8px; }
+      .top-categories .tab { padding: 8px 12px; font-size: 0.85rem; }
+    }
   </style>
 </head>
 <body>
@@ -917,6 +962,7 @@
       <nav class="main-nav" id="mainNav">
         <ul>
           <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
+          <li><a href="#whiteboard"><i class="fas fa-chalkboard"></i> Whiteboard</a></li>
           <li><a href="#about"><i class="fas fa-user-astronaut"></i> About</a></li>
           <li><a href="#contact"><i class="fas fa-satellite-dish"></i> Contact</a></li>
         </ul>
@@ -927,7 +973,20 @@
     </div>
   </header>
 
+  <!-- Top category tabs: Renders / Concept Art / Wireframes / Reels -->
+  <div class="top-categories" id="topCategories" aria-label="Gallery categories">
+    <div class="container">
+      <div class="tabs" role="tablist">
+        <button id="tabRenders" class="tab active" role="tab" aria-selected="true">RENDERS</button>
+        <button id="tabConcept" class="tab" role="tab" aria-selected="false">CONCEPT ART</button>
+        <button id="tabWireframes" class="tab" role="tab" aria-selected="false">WIREFRAMES</button>
+        <button id="tabReels" class="tab" role="tab" aria-selected="false">REELS</button>
+      </div>
+    </div>
+  </div>
+
   <main>
+    
     <section id="gallery" class="section section-gallery">
       <div class="container">
         <div class="section-header">
@@ -936,8 +995,11 @@
         </div>
         
         <div class="gallery-grid">
+          <div id="galleryEmpty" class="gallery-empty" style="display:none; grid-column: 1/-1; text-align:center; padding:40px 20px;">
+            <p style="color:rgba(224,224,255,0.7); font-weight:600; letter-spacing:1px;">No items in this category yet — add gallery items with <code>data-cat="wireframes"</code> or <code>data-cat="concept"</code>.</p>
+          </div>
           <!-- Featured Images -->
-          <div class="gallery-item hidden-item">
+          <div class="gallery-item hidden-item" data-cat="renders">
             <img src="YA.png" alt="Futuristic Gun" loading="lazy">
             <div class="item-overlay">
               <h3>CAR </h3>
@@ -952,7 +1014,7 @@
 
 
 
-          <div class="gallery-item hidden-item">
+          <div class="gallery-item hidden-item" data-cat="renders">
             <img src="gun2.png" alt="Futuristic Gun" loading="lazy">
             <div class="item-overlay">
               <h3>Futuristic Gun </h3>
@@ -963,7 +1025,7 @@
           </div>
             
           
-          <div class="gallery-item hidden-item">
+          <div class="gallery-item hidden-item" data-cat="renders">
             <img src="render 1.png" alt="Pool Rooms" loading="lazy">
             <div class="item-overlay">
               <h3>POOL ROOMS</h3>
@@ -974,7 +1036,7 @@
           </div>
 
 
-          <div class="gallery-item hidden-item">
+          <div class="gallery-item hidden-item" data-cat="renders">
             <img src="render 2.png" alt="Pool Rooms" loading="lazy">
             <div class="item-overlay">
               <h3>POOL ROOMS</h3>
@@ -985,7 +1047,7 @@
           </div>
 
 
-          <div class="gallery-item hidden-item">
+          <div class="gallery-item hidden-item" data-cat="renders">
             <img src="sample .png" alt="neurofractal" loading="lazy">
             <div class="item-overlay">
               <h3>Neurofractal (Concept)</h3>
@@ -994,7 +1056,7 @@
               </button>
             </div>
           </div>
-          <div class="gallery-item hidden-item">
+          <div class="gallery-item hidden-item" data-cat="renders">
             <img src="simple.png" alt="neurofractal" loading="lazy">
             <div class="item-overlay">
               <h3>Neurofractal (Concept)</h3>
@@ -1003,7 +1065,7 @@
               </button>
             </div>
           </div>
-          <div class="gallery-item hidden-item">
+          <div class="gallery-item hidden-item" data-cat="renders">
             <img src="drawn.png" alt="neurofractal" loading="lazy">
             <div class="item-overlay">
               <h3>Neurofractal (Concept)</h3>
@@ -1014,7 +1076,7 @@
           </div>
 
 
-          <div class="gallery-item hidden-item">
+          <div class="gallery-item hidden-item" data-cat="renders">
             <img src="somethin.png" alt="neurofractal" loading="lazy">
             <div class="item-overlay">
               <h3>Neurofractal (Concept)</h3>
@@ -1028,7 +1090,7 @@
 
 
 
-<div class="gallery-item">
+<div class="gallery-item" data-cat="renders">
             <img src="neurofractal.jpg" alt="neurofractal" loading="lazy">
             <div class="item-overlay">
               <h3>Neurofractal (game)</h3>
@@ -1040,7 +1102,7 @@
 
 
 
-          <div class="gallery-item">
+          <div class="gallery-item" data-cat="renders">
             <img src="HAND TEST.png" alt="Mechanical Hand" loading="lazy">
             <div class="item-overlay">
               <h3>Mechanical Hand</h3>
@@ -1050,7 +1112,7 @@
             </div>
           </div>
 
-          <div class="gallery-item">
+          <div class="gallery-item hidden-item" data-cat="renders">
             <img src="odst render 1 (1).png" alt="ODST 1" loading="lazy">
             <div class="item-overlay">
               <h3>ODST 1</h3>
@@ -1120,7 +1182,7 @@
             </div>
           </div>
 
-          <div class="gallery-item hidden-item">
+          <div class="gallery-item hidden-item" data-cat="renders">
             <img src="armory.png" alt="Armory" loading="lazy">
             <div class="item-overlay">
               <h3>Armory</h3>
@@ -1292,6 +1354,126 @@
           </div>
 
 
+          <!-- CONCEPT ARTS -->
+           <div class="gallery-item" data-cat="concept">
+              <img src="Drones Revamped.png" alt="Concept Title" loading="lazy">
+                <div class="item-overlay">
+                  <h3>Drones</h3>
+                      <button class="view-btn" data-image="Drones Revamped.png" data-title="DRONES">
+                        <i class="fas fa-expand"></i> View
+                      </button>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-cat="concept">
+              <img src="StoryBoard Cutscne 2 LVL 1 ENDIG.png" alt="Concept Title" loading="lazy">
+                <div class="item-overlay">
+                  <h3>SOTRYBOARD</h3>
+                      <button class="view-btn" data-image="StoryBoard Cutscne 2 LVL 1 ENDIG.png" data-title="STORYBOARD">
+                        <i class="fas fa-expand"></i> View
+                      </button>
+                </div>
+            </div>
+            
+
+
+
+
+
+            <!-- WIREFRAMES HERE: -->
+             <div class="gallery-item" data-cat="wireframes">
+                <img src="wireframe/kitt.png" alt="Concept Title" loading="lazy">
+                <div class="item-overlay">
+                    <h3>KITT</h3>
+                    <button class="view-btn" data-image="wireframe/kitt.png" data-title="KITT">
+                      <i class="fas fa-expand"></i> View
+                    </button>
+                </div>
+              </div>
+              
+              <div class="gallery-item" data-cat="wireframes">
+                <img src="wireframe/shoes.jpg" alt="Concept Title" loading="lazy">
+                <div class="item-overlay">
+                    <h3>SHOES</h3>
+                    <button class="view-btn" data-image="wireframe/shoes.jpg" data-title="shoes">
+                      <i class="fas fa-expand"></i> View
+                    </button>
+                </div>
+              </div>
+
+              <div class="gallery-item" data-cat="wireframes">
+                <img src="wireframe/marathongun.jpg" alt="Concept Title" loading="lazy">
+                <div class="item-overlay">
+                    <h3>MACHINE GUN</h3>
+                    <button class="view-btn" data-image="wireframe/marathongun.jpg" data-title="shoes">
+                      <i class="fas fa-expand"></i> View
+                    </button>
+                </div>
+              </div>
+
+              <div class="gallery-item" data-cat="wireframes">
+                <img src="wireframe/nx7.jpg" alt="Concept Title" loading="lazy">
+                <div class="item-overlay">
+                    <h3>nx7</h3>
+                    <button class="view-btn" data-image="wireframe/nx7.jpg" data-title="nx7">
+                      <i class="fas fa-expand"></i> View
+                    </button>
+                </div>
+              </div>
+
+              <div class="gallery-item" data-cat="wireframes">
+                <img src="wireframe/nx9.jpg" alt="Concept Title" loading="lazy">
+                <div class="item-overlay">
+                    <h3>NX9</h3>
+                    <button class="view-btn" data-image="wireframe/nx9.jpg" data-title="NX-9">
+                      <i class="fas fa-expand"></i> View
+                    </button>
+                </div>
+              </div>
+              
+
+              <div class="gallery-item" data-cat="wireframes">
+                <img src="wireframe/nx72.jpg" alt="Concept Title" loading="lazy">
+                <div class="item-overlay">
+                    <h3>NX-7 (OLD)</h3>
+                    <button class="view-btn" data-image="wireframe/nx72.jpg" data-title="NX-9">
+                      <i class="fas fa-expand"></i> View
+                    </button>
+                </div>
+              </div>
+
+
+              <div class="gallery-item" data-cat="wireframes">
+                <img src="wireframe/odst helm.jpg" alt="Concept Title" loading="lazy">
+                <div class="item-overlay">
+                    <h3>ODST HELMET</h3>
+                    <button class="view-btn" data-image="wireframe/odst helm.jpg" data-title="NX-9">
+                      <i class="fas fa-expand"></i> View
+                    </button>
+                </div>
+              </div>
+
+
+              <div class="gallery-item" data-cat="wireframes">
+                <img src="wireframe/pisto.jpg" alt="Concept Title" loading="lazy">
+                <div class="item-overlay">
+                    <h3>Futuristic Pistol</h3>
+                    <button class="view-btn" data-image="wireframe/pisto.jpg" data-title="PISTOL">
+                      <i class="fas fa-expand"></i> View
+                    </button>
+                </div>
+              </div>
+
+              <div class="gallery-item" data-cat="wireframes">
+                <img src="wireframe/pool 2.jpg" alt="Concept Title" loading="lazy">
+                <div class="item-overlay">
+                    <h3>POOL ROOMS</h3>
+                    <button class="view-btn" data-image="wireframe/pool 2.jpg" data-title="PISTOL">
+                      <i class="fas fa-expand"></i> View
+                    </button>
+                </div>
+              </div>
+
         </div>
 
         <div class="gallery-controls">
@@ -1301,8 +1483,58 @@
             <i class="fas fa-chevron-down"></i>
           </button>
         </div>
+
+       
+         
+
+
       </div>
+
+
+      
+</div>
     </section>
+
+    <!-- <section id="whiteboard" class="section section-whiteboard">
+      <div class="container">
+        <div class="section-header">
+          <h2>Concept Art — Whiteboarding</h2>
+          <p>Quick sketches, ideation and 2D concept iterations (WHITEBOARDing).</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="Alternate world.png" alt="Whiteboard Sketch 1" loading="lazy">
+            <div class="item-overlay">
+              <h3>WHITEBOARD SKETCH 1</h3>
+              <button class="view-btn" data-image="whiteboard1.png" data-title="Whiteboard Sketch 1">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="whiteboard2.png" alt="Whiteboard Sketch 2" loading="lazy">
+            <div class="item-overlay">
+              <h3>WHITEBOARD SKETCH 2</h3>
+              <button class="view-btn" data-image="whiteboard2.png" data-title="Whiteboard Sketch 2">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="whiteboard3.png" alt="Whiteboard Sketch 3" loading="lazy">
+            <div class="item-overlay">
+              <h3>WHITEBOARD SKETCH 3</h3>
+              <button class="view-btn" data-image="whiteboard3.png" data-title="Whiteboard Sketch 3">
+                <i class="fas fa-expand"></i> View
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
 
     <section id="about" class="section section-about">
       <div class="container">
@@ -1371,6 +1603,7 @@
               <p>Maharashtra, India</p>
             </div>
             
+            <!-- SOCIALS -->
             <div class="social-links">
               <a href="#" aria-label="ArtStation"><i class="fab fa-artstation"></i></a>
               <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -1407,7 +1640,7 @@
     </section>
   </main>
 
-  <div class="animation-panel-toggle" id="panelToggle">
+  <div class="animation-panel-toggle" id="panelToggle" tabindex="0" title="Open reels (press R)">
     <i class="fas fa-play"></i>
     <span>REELS</span>
   </div>
@@ -1587,6 +1820,78 @@
         });
       });
 
+      // Gallery filtering for top category tabs
+      const tabRenders = document.getElementById('tabRenders');
+      const tabConcept = document.getElementById('tabConcept');
+      const tabWireframes = document.getElementById('tabWireframes');
+      const tabReels = document.getElementById('tabReels');
+      const tabs = tabReels ? [tabRenders, tabConcept, tabWireframes, tabReels] : [tabRenders, tabConcept, tabWireframes];
+      const galleryGrid = document.querySelector('.gallery-grid');
+      const allGalleryItems = document.querySelectorAll('.gallery-item');
+
+      function filterGallery(cat) {
+        // update active state
+        tabs.forEach(t => {
+          const active = (t === document.getElementById('tab' + cat.charAt(0).toUpperCase() + cat.slice(1)));
+          t.classList.toggle('active', active);
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+
+        // show/hide items (items matching category are shown regardless of hidden-item state)
+        allGalleryItems.forEach(item => {
+          const itemCat = item.getAttribute('data-cat') || 'renders';
+          if (cat === 'all' || itemCat === cat) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        // empty-state placeholder
+        const empty = document.getElementById('galleryEmpty');
+        const visibleCount = Array.from(allGalleryItems).filter(it => it.style.display !== 'none').length;
+        if (empty) {
+          if (visibleCount === 0) {
+            empty.style.display = 'block';
+            empty.querySelector('p').innerHTML = cat === 'wireframes' ?
+              'No wireframes yet — add items with <code>data-cat="wireframes"</code>.' :
+              (cat === 'concept' ? 'No concept art yet — add items with <code>data-cat="concept"</code>.' : 'No projects in this category.');
+          } else {
+            empty.style.display = 'none';
+          }
+        }
+      }
+
+      // Hook up the tabs
+      tabRenders.addEventListener('click', function() {
+        filterGallery('renders');
+        document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+      });
+      tabConcept.addEventListener('click', function() {
+        filterGallery('concept');
+        document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+      });
+      tabWireframes.addEventListener('click', function() {
+        filterGallery('wireframes');
+        document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // Reels tab: open animation panel and set tab active
+      if (tabReels) {
+        tabReels.addEventListener('click', function() {
+          // set active state on tabs
+          tabs.forEach(t => {
+            t.classList.toggle('active', t === tabReels);
+            t.setAttribute('aria-selected', t === tabReels ? 'true' : 'false');
+          });
+          animationPanel.classList.add('active');
+          videos.forEach(video => video.play());
+        });
+      }
+
+      // Show Renders by default on enter
+      filterGallery('renders');
+
       // Animation panel toggle
       const panelToggle = document.getElementById('panelToggle');
       const panelClose = document.getElementById('panelClose');
@@ -1596,6 +1901,31 @@
       panelToggle.addEventListener('click', function() {
         animationPanel.classList.add('active');
         videos.forEach(video => video.play());
+      });
+      // Allow Enter/Space to trigger the toggle when focused
+      panelToggle.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          panelToggle.click();
+        }
+      });
+
+      // Keyboard shortcut: press 'R' to open reels, 'Escape' to close
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'r' || e.key === 'R') {
+          animationPanel.classList.add('active');
+          videos.forEach(video => video.play());
+        }
+        if (e.key === 'Escape') {
+          if (animationPanel.classList.contains('active')) {
+            animationPanel.classList.remove('active');
+            videos.forEach(video => video.pause());
+          }
+          if (modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+          }
+        }
       });
       
       panelClose.addEventListener('click', function() {
