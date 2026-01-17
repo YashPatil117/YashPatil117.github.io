@@ -1,0 +1,175 @@
+/* Programming portfolio styles — aligns with main site theme */
+:root{
+  --dark-bg: #0a0a12;
+  --darker: #05050a;
+  --muted: #bdbdbd;
+  --accent: #0ff27a;
+}
+
+body{
+  background-color: var(--dark-bg);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(255, 0, 240, 0.02) 0%, transparent 20%);
+}
+
+.page-container{
+  max-width:1100px;
+  margin:40px auto;
+  padding:20px;
+}
+
+.page-header h1{ margin:0 0 6px 0 }
+.subtitle{ color:var(--muted); margin-top:0 }
+
+.projects-wrapper{
+  /* two-column ladder/grid so cards sit left and right of center */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 80px;
+  row-gap: 28px;
+  margin-top: 24px;
+  align-items: start;
+  position: relative;
+}
+
+/* thin centered separator between columns */
+.projects-wrapper::before{
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(0,240,255,0.16), rgba(255,0,240,0.06));
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.project-card{
+  display:flex;
+  gap:24px;
+  align-items:center;
+  background: transparent; /* remove framed background */
+  border: none; /* remove border/frame */
+  padding:12px 0; /* reduce internal padding so cards feel flush */
+  border-radius: 0;
+  position: relative;
+  z-index: 2; /* ensure cards appear above the center line */
+  grid-column: 1 / 2;
+}
+
+.project-card.alt{ flex-direction:row-reverse; grid-column: 2 / 3 }
+
+.project-img{ flex:1; min-width:220px; max-width:520px }
+.project-img svg{ width:100%; height:100%; display:block; border-radius:6px }
+.project-img svg rect{ fill: transparent !important; } /* remove inner svg "frame" */
+.project-img img{ display:block; max-width:100%; border-radius:6px }
+
+.project-desc{ flex:1; padding:10px 6px }
+.project-desc h3{ margin:0 0 8px 0 }
+.project-desc p{ margin:6px 0; color:var(--muted) }
+.project-tags{ font-size:0.9rem; color:#8fd7b4 }
+.project-link{ display:inline-block; margin-top:10px; color:var(--accent); border:1px solid rgba(255,255,255,0.06); padding:6px 10px; border-radius:4px; text-decoration:none }
+
+/* LeetCode section */
+.leetcode-wrapper{ margin-top:40px; padding:16px; border-radius:8px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03) }
+.leetcode-controls{ display:flex; gap:8px; margin-top:12px }
+.leetcode-controls input{ padding:8px; border-radius:4px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:#fff; flex:0 0 220px }
+.leetcode-controls button{ padding:8px 12px; border-radius:4px; background:var(--accent); border:none; color:#000; cursor:pointer }
+.lc-result{ margin-top:12px }
+.lc-placeholder{ color:var(--muted) }
+
+.note{ color:var(--muted); margin-top:10px; font-size:0.9rem }
+
+@media (max-width:800px){
+  .projects-wrapper{ display:flex; flex-direction:column; gap:18px }
+  .project-card{ flex-direction:column; grid-column: auto }
+  .project-card.alt{ flex-direction:column }
+  .projects-wrapper::before{ display:none }
+}
+
+/* ==========================
+   LeetCode Fixed Widget
+   ========================== */
+
+.leetcode-widget {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  width: 260px;
+  max-height: 70vh;
+
+  background: #0f0f0f;
+  color: #ffffff;
+
+  border-radius: 14px;
+  padding: 16px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 999;
+
+  overflow-y: auto;
+}
+
+.leetcode-widget h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.lc-user {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.lc-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.lc-stat {
+  flex: 1;
+  background: #181818;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.lc-stat .label {
+  display: block;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.lc-stat .value {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.lc-raw {
+  margin-top: 12px;
+  font-size: 11px;
+  white-space: pre-wrap;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Scrollbar styling */
+.leetcode-widget::-webkit-scrollbar {
+  width: 6px;
+}
+
+.leetcode-widget::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
